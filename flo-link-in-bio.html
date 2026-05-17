@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Flo — Money tips for the ones just getting started. No shame. No jargon. Just flow.">
+<title>Flo 🌊 | @the.money.flo</title>
+<style>
+  :root {
+    --forest:  #0F5552;
+    --deep:    #1A8C86;
+    --mid:     #2ABCB4;
+    --light:   #6DD4CD;
+    --mint:    #C8F0ED;
+    --white:   #FAF9F6;
+    --charcoal:#1E1E1E;
+    --amber:   #F5A623;
+    --gray:    #6B7280;
+    --gray-lt: #F3F4F6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--forest);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 60px;
+  }
+
+  /* ── WAVE BACKGROUND ── */
+  .bg-wave {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .bg-wave::before {
+    content: '';
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: rgba(42, 188, 180, 0.07);
+    top: -200px; right: -200px;
+  }
+  .bg-wave::after {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: rgba(109, 212, 205, 0.05);
+    bottom: -100px; left: -150px;
+  }
+
+  /* ── CONTAINER ── */
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    padding: 48px 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ── PROFILE ── */
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  .avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    border: 2.5px solid var(--mid);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .display-name {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+  }
+
+  .handle {
+    font-size: 13px;
+    color: var(--light);
+    margin-bottom: 14px;
+    letter-spacing: 0.3px;
+  }
+
+  .bio {
+    font-size: 14px;
+    color: rgba(255,255,255,0.82);
+    text-align: center;
+    line-height: 1.65;
+    max-width: 320px;
+  }
+
+  .bio strong {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* ── WAVE DIVIDER ── */
+  .wave-divider {
+    width: 100%;
+    margin: 28px 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .wave-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(109,212,205,0.25);
+  }
+  .wave-icon {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    color: var(--light);
+    opacity: 0.7;
+  }
+
+  /* ── LINKS ── */
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Featured CTA */
+  .link-featured {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--amber);
+    border-radius: 14px;
+    padding: 18px 22px;
+    text-decoration: none;
+    color: var(--charcoal);
+    transition: transform 0.15s, opacity 0.15s;
+    gap: 12px;
+  }
+  .link-featured:hover {
+    transform: translateY(-2px);
+    opacity: 0.93;
+  }
+  .link-featured-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .link-featured-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: rgba(30,30,30,0.65);
+  }
+  .link-featured-title {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--charcoal);
+    line-height: 1.3;
+  }
+  .link-featured-arrow {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(15,85,82,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    color: var(--charcoal);
+  }
+
+  /* Standard link */
+  .link-standard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(109,212,205,0.18);
+    border-radius: 14px;
+    padding: 16px 22px;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.15s, transform 0.15s;
+    gap: 12px;
+  }
+  .link-standard:hover {
+    background: rgba(255,255,255,0.11);
+    transform: translateY(-2px);
+  }
+  .link-standard-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .link-standard-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--light);
+    opacity: 0.75;
+  }
+  .link-standard-title {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .link-standard-arrow {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(109,212,205,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    color: var(--light);
+  }
+
+  /* ── SOCIAL ROW ── */
+  .social-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+    justify-content: center;
+  }
+  .social-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(109,212,205,0.15);
+    border-radius: 24px;
+    padding: 9px 18px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.15s;
+  }
+  .social-btn:hover {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+  }
+  .social-icon {
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  /* ── STAT BAR ── */
+  .stat-bar {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(109,212,205,0.12);
+    border-radius: 14px;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .stat-number {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--light);
+    opacity: 0.75;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .stat-divider {
+    width: 1px;
+    background: rgba(109,212,205,0.15);
+    align-self: stretch;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-logo {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: -0.3px;
+  }
+  .footer-tagline {
+    font-size: 12px;
+    color: rgba(109,212,205,0.45);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-wave"></div>
+
+<div class="container">
+
+  <!-- ── PROFILE ── -->
+  <div class="profile">
+    <!-- Inline SVG avatar matching the profile picture -->
+    <div class="avatar">
+      <svg width="96" height="96" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="340" cy="340" r="340" fill="#0F5552"/>
+        <circle cx="340" cy="340" r="272" fill="none" stroke="#1A8C86" stroke-width="0.8" opacity="0.45"/>
+        <circle cx="340" cy="340" r="246" fill="none" stroke="#2ABCB4" stroke-width="0.5" opacity="0.22"/>
+        <text x="340" y="352" font-family="Georgia, serif" font-size="150" font-weight="bold"
+              fill="#FFFFFF" text-anchor="middle">Flo</text>
+        <path d="M 188 406 C 217 378, 252 378, 284 406 S 364 434, 396 406 S 464 378, 494 406"
+              fill="none" stroke="#6DD4CD" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="340" cy="452" r="4" fill="#F5A623"/>
+      </svg>
+    </div>
+
+    <div class="display-name">Flo 🌊</div>
+    <div class="handle">@the.money.flo</div>
+    <p class="bio">
+      nobody taught us this stuff in school.<br>
+      <strong>we're fixing that.</strong><br>
+      budgeting · saving · building wealth
+    </p>
+  </div>
+
+  <!-- ── WAVE DIVIDER ── -->
+  <div class="wave-divider">
+    <div class="wave-line"></div>
+    <div class="wave-icon">〜</div>
+    <div class="wave-line"></div>
+  </div>
+
+  <!-- ── LINKS ── -->
+  <div class="links">
+
+    <!-- Featured: Free resource -->
+    <a href="flo-basics-waitlist.html" class="link-featured">
+      <div class="link-featured-inner">
+        <div class="link-featured-label">Free — start here</div>
+        <div class="link-featured-title">Grab your free budget starter kit</div>
+      </div>
+      <div class="link-featured-arrow">→</div>
+    </a>
+
+  </div>
+
+  <!-- ── STAT BAR ── -->
+  <div class="stat-bar">
+    <div class="stat">
+      <div class="stat-number">61%</div>
+      <div class="stat-label">say money is their<br>top stressor</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-number">93%</div>
+      <div class="stat-label">want to change how<br>they manage money</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-number">9%</div>
+      <div class="stat-label">feel fully in<br>control</div>
+    </div>
+  </div>
+
+  <!-- ── SOCIAL ROW ── -->
+  <div class="social-row">
+    <a href="https://www.instagram.com/the.money.flo" class="social-btn">
+      <span class="social-icon">📸</span> Instagram
+    </a>
+    <a href="https://www.threads.com/the.money.flo" class="social-btn">
+      <span class="social-icon">🧵</span> Threads
+    </a>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <div class="footer-logo">Flo ~</div>
+    <div class="footer-tagline">money in motion</div>
+  </div>
+
+</div>
+
+</body>
+</html>
