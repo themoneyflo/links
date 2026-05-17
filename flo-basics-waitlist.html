@@ -21,11 +21,8 @@
     --gray-l:  #F3F4F6;
     --white:   #FFFFFF;
   }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+  , ::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: var(--cream);
@@ -33,12 +30,10 @@
     line-height: 1.6;
     overflow-x: hidden;
   }
-
   /* ── UTILITIES ── */
   .serif { font-family: Georgia, 'Times New Roman', serif; }
   .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   .container--narrow { max-width: 640px; margin: 0 auto; padding: 0 24px; }
-
   /* ── NAV ── */
   .nav {
     position: sticky; top: 0; z-index: 100;
@@ -66,7 +61,6 @@
     transition: opacity 0.15s;
   }
   .nav-cta:hover { opacity: 0.88; }
-
   /* ── HERO ── */
   .hero {
     background: var(--forest);
@@ -144,7 +138,6 @@
     margin: 0 auto 36px;
     position: relative;
   }
-
   /* ── FORM CARD ── */
   .form-wrap {
     background: var(--cream);
@@ -174,7 +167,6 @@
     text-align: center;
     opacity: 0.7;
   }
-
   /* Beehiiv iframe wrapper */
   .beehiiv-wrap {
     border-radius: 12px;
@@ -187,7 +179,6 @@
     border: none;
     border-radius: 12px;
   }
-
   /* ── SOCIAL PROOF BAR ── */
   .proof-bar {
     background: #0A3B38;
@@ -205,7 +196,6 @@
     border-radius: 50%;
     background: rgba(109,212,205,0.3);
   }
-
   /* ── PAIN SECTION ── */
   .pain {
     padding: 80px 24px;
@@ -261,7 +251,6 @@
     font-size: 13px; color: var(--gray);
     line-height: 1.6;
   }
-
   /* ── BRIDGE ── */
   .bridge {
     background: var(--mint2);
@@ -280,7 +269,6 @@
   }
   .bridge-quote em { color: var(--deep); font-style: italic; }
   .bridge-sub { font-size: 15px; color: var(--gray); }
-
   /* ── WHAT'S INSIDE ── */
   .inside {
     padding: 80px 24px;
@@ -334,7 +322,6 @@
     padding: 3px 10px;
     font-size: 11px; font-weight: 700;
   }
-
   /* ── WHY FLO ── */
   .why {
     padding: 80px 24px;
@@ -369,7 +356,6 @@
     margin-bottom: 8px;
   }
   .diff p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
-
   /* ── STATS ── */
   .stats {
     background: #0A3B38;
@@ -402,7 +388,6 @@
     margin: 24px 0;
     align-self: stretch;
   }
-
   /* ── FAQ ── */
   .faq {
     padding: 80px 24px;
@@ -450,7 +435,6 @@
     line-height: 1.7;
     padding-bottom: 20px;
   }
-
   /* ── FINAL CTA ── */
   .final-cta {
     padding: 96px 24px;
@@ -491,7 +475,6 @@
     font-size: 12px; color: rgba(255,255,255,0.35);
     margin-top: 14px; text-align: center;
   }
-
   /* ── FOOTER ── */
   .footer {
     background: #0A3B38;
@@ -523,25 +506,52 @@
   .footer-copy {
     font-size: 11px; color: rgba(255,255,255,0.2);
   }
-
   /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    .stats-grid { grid-template-columns: 1fr; }
-    .proof-bar { gap: 16px; flex-direction: column; }
+  @media (max-width: 640px) {
+    /* Containers */
+    .container, .container--narrow { padding: 0 16px; }
+    /* Nav */
+    .nav { padding: 0 16px; }
+    .nav-cta { padding: 6px 13px; font-size: 12px; }
+    /* Hero */
+    .hero { padding: 48px 16px 60px; }
+    .hero h1 { font-size: 28px; }
+    .hero-sub { font-size: 15px; }
+    .form-wrap { padding: 20px 16px 16px; border-radius: 14px; }
+    /* Proof bar */
+    .proof-bar { gap: 14px; flex-direction: column; padding: 16px; }
     .proof-dot { display: none; }
+    /* Pain / inside / why / FAQ sections */
+    .pain, .inside, .faq { padding: 52px 16px; }
+    .bridge { padding: 40px 16px; }
+    .why { padding: 52px 16px; }
+    .final-cta { padding: 60px 16px; }
+    .stats { padding: 40px 16px; }
+    /* Grids — force single column on small screens */
+    .pain-cards,
+    .modules,
+    .differentiators { grid-template-columns: 1fr; }
+    /* Stats */
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat-item { padding: 16px; }
+    /* Section text */
+    .section-title { font-size: 24px; }
+    .section-sub { font-size: 14px; margin-bottom: 28px; }
+    /* Bridge */
+    .bridge-quote { font-size: 18px; }
+    /* Form */
     .form-row { flex-direction: column; }
     .form-input, .form-btn { width: 100%; }
+    .final-form .form-btn { font-size: 15px; }
   }
 </style>
 </head>
 <body>
-
 <!-- ── NAV ── -->
 <nav class="nav">
   <a href="#" class="nav-logo">Flo <span>~</span></a>
   <a href="#waitlist" class="nav-cta">Join the waitlist</a>
 </nav>
-
 <!-- ── HERO ── -->
 <section class="hero">
   <div class="container--narrow">
@@ -549,32 +559,26 @@
       <div class="hero-badge-dot"></div>
       Coming soon · join the waitlist
     </div>
-
     <h1 class="serif">
       Finally get control of your money.<br>
       <em>Without the shame.</em>
     </h1>
-
     <p class="hero-sub">
       Flo Basics is the financial foundation course built for people who are done avoiding their bank account and ready to actually do something about it.
     </p>
-
     <!-- WAITLIST FORM -->
     <div class="form-wrap" id="waitlist">
       <div class="form-wrap-top">
         <h3 class="serif">Get early access</h3>
         <p>Be first to know when we launch, plus get the free Budget Starter Kit now.</p>
       </div>
-
       <div class="beehiiv-wrap">
         <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="75df3301-027e-471a-893b-5992bc68fa1a"></script>
       </div>
-
       <p class="form-note">No spam. Unsubscribe anytime. We take your inbox seriously.</p>
     </div>
   </div>
 </section>
-
 <!-- ── PROOF BAR ── -->
 <div class="proof-bar">
   <div class="proof-item">🌊 <strong>500+</strong> people already on the waitlist</div>
@@ -583,7 +587,6 @@
   <div class="proof-dot"></div>
   <div class="proof-item">🔒 <strong>No</strong> credit card required</div>
 </div>
-
 <!-- ── PAIN SECTION ── -->
 <section class="pain">
   <div class="container">
@@ -614,7 +617,6 @@
     </div>
   </div>
 </section>
-
 <!-- ── BRIDGE ── -->
 <section class="bridge">
   <div class="container--narrow">
@@ -625,16 +627,13 @@
     <p class="bridge-sub">That's exactly what Flo Basics is.</p>
   </div>
 </section>
-
 <!-- ── WHAT'S INSIDE ── -->
 <section class="inside">
   <div class="container">
     <div class="section-eyebrow">What's inside</div>
     <h2 class="section-title">Four modules.<br>One financial foundation.</h2>
     <p class="section-sub">Each module is short, practical, and designed to give you something you can act on the same day you learn it.</p>
-
     <div class="modules">
-
       <div class="module">
         <div class="module-num">Module 01</div>
         <div class="module-icon" style="background:#E0F7F5;">💡</div>
@@ -642,7 +641,6 @@
         <p>Find your real take-home pay, understand where your money is actually going right now, and stop guessing. Clarity before strategy.</p>
         <span class="module-tag">Awareness</span>
       </div>
-
       <div class="module">
         <div class="module-num">Module 02</div>
         <div class="module-icon" style="background:#E8F8F7;">📊</div>
@@ -650,7 +648,6 @@
         <p>Apply the 50/30/20 rule to your actual income. Includes a fill-in worksheet, example budgets at every income level, and a plan for overspending months.</p>
         <span class="module-tag">Action</span>
       </div>
-
       <div class="module">
         <div class="module-num">Module 03</div>
         <div class="module-icon" style="background:#FDE8BA;">🛡️</div>
@@ -658,7 +655,6 @@
         <p>Start your emergency fund, even on a tight budget. Learn exactly how much you need, where to keep it, and how to build it faster than you think.</p>
         <span class="module-tag">Security</span>
       </div>
-
       <div class="module">
         <div class="module-num">Module 04</div>
         <div class="module-icon" style="background:#E0F7F5;">🌊</div>
@@ -666,11 +662,9 @@
         <p>Build the habits and systems that make your budget automatic. Weekly check-in routine, how to handle setbacks, and your first 90-day money plan.</p>
         <span class="module-tag">Habit</span>
       </div>
-
     </div>
   </div>
 </section>
-
 <!-- ── WHY FLO ── -->
 <section class="why">
   <div class="container">
@@ -696,7 +690,6 @@
     </div>
   </div>
 </section>
-
 <!-- ── STATS ── -->
 <section class="stats">
   <div class="container">
@@ -716,15 +709,12 @@
     </div>
   </div>
 </section>
-
 <!-- ── FAQ ── -->
 <section class="faq">
   <div class="container--narrow">
     <div class="section-eyebrow">FAQ</div>
     <h2 class="section-title">Questions we get asked.</h2>
-
     <div class="faq-list">
-
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           What exactly is Flo Basics?
@@ -734,7 +724,6 @@
           <p>Flo Basics is a self-paced digital course covering the financial fundamentals that nobody teaches: budgeting, saving, and building an emergency fund. It's designed to be completed in a weekend, but built to be used for life.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           How much does it cost?
@@ -744,7 +733,6 @@
           <p>Flo Basics is priced at <strong>$47</strong>. If you're on the waitlist, you'll get early-bird access at <strong>$27</strong> for the first 48 hours after launch. That's our thank-you for showing up early. No subscription. No upsells. One payment, lifetime access.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           I've tried budgeting before and it never stuck. Why would this be different?
@@ -754,7 +742,6 @@
           <p>Most budgeting tools assume you're already motivated and just need a system. Flo Basics starts one step earlier, with why budgeting feels impossible, and what to do about the psychological barriers before even touching a spreadsheet. The system works because it's built around your actual behavior, not an idealized version of it.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           I don't make a lot of money. Is this still for me?
@@ -764,7 +751,6 @@
           <p>Yes, especially you. Flo Basics includes examples and worksheets for every income level, including tight budgets, irregular income, and people carrying debt. The goal isn't to build wealth overnight. It's to give you control over whatever you have right now.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           When does it launch?
@@ -774,7 +760,6 @@
           <p>We're not announcing a specific date yet, but waitlist members will be the first to know and the first to get access. Join now and you won't miss it.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           What do I get when I sign up for the waitlist?
@@ -784,11 +769,9 @@
           <p>Immediately, you'll get the free Flo Budget Starter Kit, a step-by-step guide to building your first budget using the 50/30/20 rule. At launch, you'll get early access, the waitlist discount, and first look at everything inside Flo Basics.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
 <!-- ── FINAL CTA ── -->
 <section class="final-cta">
   <div class="container--narrow">
@@ -805,7 +788,6 @@
     </div>
   </div>
 </section>
-
 <!-- ── FOOTER ── -->
 <footer class="footer">
   <div class="footer-logo">Flo ~</div>
@@ -819,7 +801,6 @@
   </div>
   <div class="footer-copy">© 2026 Flo. All rights reserved.</div>
 </footer>
-
 <script>
   function toggleFaq(btn) {
     const item = btn.parentElement;
